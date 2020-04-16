@@ -1,8 +1,22 @@
 {
   "name": "electron-react-starter",
+  "author": "phil stenning",
   "version": "0.1.0",
   "private": true,
+  "main": "public/start.js",
+  "build": {
+    "extends": null,
+    "appId": "com.xxx.xxx",
+    "files": [
+      "**/*",
+      "build/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
   "dependencies": {
+    "electron-is-dev": "^1.2.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -11,10 +25,13 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "cross-env NODE_ENV=dev electron .",
+    "dist": "yarn dist electron-builder",
+    "dist:dir": "yarn dist --dir"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +47,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "electron": "^8.2.2",
+    "electron-builder": "^22.5.1"
   }
 }
